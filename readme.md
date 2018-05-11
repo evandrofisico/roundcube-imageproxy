@@ -9,7 +9,7 @@ I am specially using it in conjunction to a serviceworker plugin (soon to be rel
 
 I run a local imageproxy instance on localhost, configured to cache on a local redis instance, something like this:
 
-imageproxy -addr localhost:8080 --cache redis://localhost/ -verbose -signatureKey VeryLongSignaturestring
+	imageproxy -addr localhost:8080 --cache redis://localhost/ -verbose -signatureKey VeryLongSignaturestring
 
 On the roundcube hosting vhost, 
 
@@ -20,6 +20,7 @@ On the roundcube hosting vhost,
 On the plugin configuration,
 
 	$config['imageproxy_url'] = 'https://webmail.example.com/imageproxy';
+	$config['imageproxy_signature'] = 'VeryLongSignaturestring';
 
 
 
