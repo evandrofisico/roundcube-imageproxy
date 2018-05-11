@@ -1,0 +1,8 @@
+<?php
+
+// Enable emoticons in plain text messages preview
+$config['imageproxy_url'] = 'url to your imageproxy instance';
+
+$config['imageproxy_signature'] = 'the same string used on imageproxy';
+
+?>
