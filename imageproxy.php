@@ -39,6 +39,7 @@ class imageproxy extends rcube_plugin
 	    $srcurl = array_pop($imagesUrl);
 	    foreach($srcurl as $imgurl){
 		$newpath = $this->image_proxy_path("http".$imgurl);
+		error_log($newpath);
 		$args["body"] = str_replace("http".$imgurl,$newpath,$args["body"]);
 	    }
         }
@@ -49,7 +50,7 @@ class imageproxy extends rcube_plugin
         $rcube = rcube::get_instance();
 	$proxypath = $rcube->config->get('imageproxy_url');
 	$signature = $rcube->config->get('imageproxy_signature');
-	$imghs = str_replace(array('+','/'),array('-','_'),base64_encode(hash_hmac("sha256",$url,$signature,true)));
+	$imghs = str_replace(array('+','/'),array('-','_'),base64_encode(hash_hmac("sha256",html_entity_decode($url),$signature,true)));
 	return $proxypath."/s".$imghs."/".$url;
     }
 }
