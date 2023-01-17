@@ -36,7 +36,7 @@ class imageproxy extends rcube_plugin
             }
 
 	    preg_match_all('@src="http([^"]+)"@', $args['body'], $imagesUrl);
-	    $srcurl = array_pop($imagesUrl);
+	    $srcurl = array_unique(array_pop($imagesUrl));
 	    foreach($srcurl as $imgurl){
 		$newpath = $this->image_proxy_path("http".$imgurl);
 		error_log($newpath);
